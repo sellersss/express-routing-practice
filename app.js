@@ -30,14 +30,14 @@ app.get('/median', (req, res, next) => {
   let arr = req.query.nums;
 
   if (!arr) {
-    throw new ExpressError('Bad request. Please enter an array of numbers separated by commas.', 400)
+    throw new ErrorHandler('Bad request. Please enter an array of numbers separated by commas.', 400)
   }
 
   let numsAsStrings = req.query.nums.split(',');
   let nums = convertAndValidate(numsAsStrings);
 
   if (nums instanceof Error) {
-    throw new ExpressError(nums.message);
+    throw new ErrorHandler(nums.message);
   }
 
   let result = {
@@ -52,14 +52,14 @@ app.get('/mode', (req, res, next) => {
   let arr = req.query.nums;
 
   if (!arr) {
-    throw new ExpressError('Bad request. Please enter an array of numbers separated by commas.', 400)
+    throw new ErrorHandler('Bad request. Please enter an array of numbers separated by commas.', 400)
   }
 
   let numsAsStrings = req.query.nums.split(',');
   let nums = convertAndValidate(numsAsStrings);
 
   if (nums instanceof Error) {
-    throw new ExpressError(nums.message);
+    throw new ErrorHandler(nums.message);
   }
 
   let result = {
